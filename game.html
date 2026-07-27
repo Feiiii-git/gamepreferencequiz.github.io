@@ -31,10 +31,11 @@
   }
   document.addEventListener("change", onChange);
   byId("calc").addEventListener("click", function () {
-    var i, incomplete = false, q6, subjective, issueCount, q10, objective, types, best, titleName;
-    for (i = 0; i < ids.length; i++) if (!document.querySelector('input[name="' + ids[i] + '"]:checked')) incomplete = true;
-    if (incomplete || !(document.querySelector(".issue:checked") || byId("none").checked)) {
-      byId("warn").textContent = "请完成全部 10 题后再查看结果。";
+    var i, unanswered = [], q6, subjective, issueCount, q10, objective, types, best, titleName;
+    for (i = 0; i < ids.length; i++) if (!document.querySelector('input[name="' + ids[i] + '"]:checked')) unanswered.push("Q" + (i + 1));
+    if (!(document.querySelector(".issue:checked") || byId("none").checked)) unanswered.push("Q10");
+    if (unanswered.length) {
+      byId("warn").textContent = "请完成以下未作答题目：" + unanswered.join("、") + "。";
       return;
     }
     byId("warn").textContent = "";
