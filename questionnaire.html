@@ -38,8 +38,8 @@ document.getElementById("calculate").addEventListener("click",function(){
  var issues=document.querySelectorAll(".issue:checked").length;
  var q10=document.getElementById("no-problem").checked?5:Math.max(0,5-issues*.5);
  var obj=val("q7")*.35+val("q8")*.30+val("q9")*.20+q10*.15;
- document.getElementById("subjective-score").textContent=sub.toFixed(2)+" / 5";
- document.getElementById("objective-score").textContent=obj.toFixed(2)+" / 5";
+ document.getElementById("subjective-score").textContent=sub.toFixed(1)+" / 5";
+ document.getElementById("objective-score").textContent=obj.toFixed(1)+" / 5";
  var sources=[["q1","回顾型喜欢","你对他的内容有持续回看和收藏的意愿。"],["q2","相处型喜欢","他的说话方式、反应或互动会让你开心。"],["q3","角色吸引力","这个具体角色的实际表现打动了你。"],["q4","后劲型喜欢","打完之后，他仍会留在你的心里。"],["q5","持续关注型喜欢","你愿意继续追他的官方新内容。"]];
  var best=sources[0];sources.forEach(function(x){if(val(x[0])>val(best[0]))best=x});document.getElementById("source-title").textContent="主要喜爱来源："+best[1];document.getElementById("source-text").textContent=best[2];
  var r=["无明显保留。","存在轻微介意。","存在一些雷点，需要优点弥补。","雷点较明显，已影响体验。","雷点很多，只能勉强接受。","雷点严重，已影响整体评价。"];document.getElementById("reserve-text").textContent=r[Number(document.querySelector('input[name="q6"]:checked').value)];
